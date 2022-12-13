@@ -3,7 +3,6 @@ import { NavLink} from "react-router-dom";
 
 const Vacansie = (props) => {
     let path = `/vacansie/${props.vacansie.id}`
-    console.log(props)
     return (
         <NavLink  to={path} state={props.vacansie} >
         <div className="vacansie">

@@ -9,7 +9,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-debugger;
 
 let NewVacansieContainer = connect(mapStateToProps) (newVacansie);
 

@@ -21,7 +21,6 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         EditVacansie: (vacansie) => {
-            debugger;
             dispatch(EditVacansieActionCreator(vacansie))
         },
         ChangeVacansie: (titleVac, salaryVac, expVac, textVac) => {

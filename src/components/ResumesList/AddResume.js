@@ -48,7 +48,6 @@ const AddResume = (props) => {
         props.ChangeResume(salaryRes, expRes, aboutRes)
     }
 
-    debugger;
     return (
         <div>
             <NavLink to="/resumes">Назад</NavLink>

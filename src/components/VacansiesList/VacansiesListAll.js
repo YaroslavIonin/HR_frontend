@@ -51,7 +51,6 @@ function VacansiesListAll(props) {
 
         }).then(response =>  
             {
-                debugger;
                 for (let i = 0; i < response.data.length; i++) {
                     this.props.setVacansies(response.data[i]);
                 }

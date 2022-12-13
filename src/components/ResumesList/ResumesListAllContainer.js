@@ -12,9 +12,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        
         setResumes: (resumes) => {
-            debugger;
             dispatch(SetResumesActionCreator(resumes))
         }
     }

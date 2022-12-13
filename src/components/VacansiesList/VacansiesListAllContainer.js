@@ -13,12 +13,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         setVacansies: (vacansies) => {
-            debugger;
             dispatch(SetVacansiesActionCreator(vacansies))
         }
     }
 }
-debugger;
 
 let VacansiesListAllContainer = connect(mapStateToProps, mapDispatchToProps) (VacansiesListAll);
 

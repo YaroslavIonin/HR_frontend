@@ -18,12 +18,17 @@ const EditResume = (props) => {
     const nav = useNavigate()
 
     useLayoutEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/resumes/${location.state.id}`, {
-            'headers': {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${String(authToken.access)}`
-            }
-        }).then(response => response.data)
+        axios({
+            method: "get",
+            url: `http://127.0.0.1:8000/api/resumes/${location.state.id}/`,
+            headers: {
+                Authorization: `Bearer ${String(authToken.access)}`,
+            },
+            params: {
+                status: 'my',
+            },
+        })
+        .then(response => response.data)
             .then((response) => {
                 setState(response)
                 setAbout_Me(response.about_me)
@@ -45,18 +50,30 @@ const EditResume = (props) => {
         formData.append("image", image ? image : state.image)
         formData.append("status", 'N_P')
         formData.append("file", file ? file : state.file)
-
-        axios
+        axios({
+            method: "put",
+            url: `http://127.0.0.1:8000/api/resumes/${location.state.id}/`,
+            headers: {
+                Authorization: `Bearer ${String(authToken.access)}`,
+            },
+            params: {
+                status: 'my',
+            },
+            data: formData
+        })
+        /* axios
             .put(`http://127.0.0.1:8000/api/resumes/${location.state.id}/`,
                 formData,
                 {
                     'headers': {
                         'Authorization': `Bearer ${String(authToken.access)}`
                     }
-                })
+                }) */
             .then(response => {
                 if (response.status == 200) {
-                    nav('/resumes')
+                    nav(`/resume/${location.state.id}`,{
+                        state: response.data
+                    })
                 }
             })
             .catch(error => console.log(error.response))

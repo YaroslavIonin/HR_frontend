@@ -14,8 +14,6 @@ function VacansiesListMy(props) {
                 'Authorization': `Bearer ${String(authToken.access)}`,
 
             },
-            
-
         },
         {
             

@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const ActiveVacansie = (props) => {
-    debugger;
     const location = useLocation();
     console.log(location.state);
     console.log(props.user.id);

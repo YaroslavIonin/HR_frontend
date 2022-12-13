@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const SeeVacansie = (props) => {
-    debugger;
     return(
         <div>
             <NavLink to="/vacansies/new_vacansie/edit">редактировать</NavLink>

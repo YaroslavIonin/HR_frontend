@@ -45,7 +45,6 @@ const SortsVacansies = (props) => {
     }, [])
 
     let onSortsChange = (e) => {
-        console.log(e.target.name, e.target.value)
         if (e.target.name === 'salary') {
             setSalary(Number(e.target.value))
         } else if (e.target.name === 'exp_work') {

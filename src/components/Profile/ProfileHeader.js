@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 const ProfileHeader = (props) => {
     const [open, setOpen] = React.useState(false)
     let { user } = useContext(AuthContext)
-    let handleClick = () => setOpen(true)
+    let handleClick = () => setOpen(!open)
     return(
         <div className="profile">
             <div className='info'>

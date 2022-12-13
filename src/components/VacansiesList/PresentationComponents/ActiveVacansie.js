@@ -5,9 +5,46 @@ import AuthContext from "../../../context/AuthContext";
 
 const ActiveVacansie = (props) => {
     const location = useLocation();
-    let { user } = useContext(AuthContext)
+    let { user, authToken } = useContext(AuthContext)
 
     let path = `/vacansie/edit/${location.state.id}`
+
+    let notPublish = () => {
+        let data = location.state
+        data.status = 'N_P'
+        axios({
+            method: "put",
+            url: `http://127.0.0.1:8000/api/vacancies/${location.state.id}/`,
+            headers: {
+                Authorization: `Bearer ${String(authToken.access)}`,
+            },
+            params: {
+                status: 'my'
+            },
+            data: data
+        })
+        .then(response =>{
+            console.log(response.data)
+        })
+    }
+    let publish = () => {
+        let data = location.state
+        data.status = 'Y_P'
+        axios({
+            method: "put",
+            url: `http://127.0.0.1:8000/api/vacancies/${location.state.id}/`,
+            headers: {
+                Authorization: `Bearer ${String(authToken.access)}`,
+            },
+            params: {
+                status: 'my'
+            },
+            data: data
+        })
+        .then(response =>{
+            console.log(response.data)
+        })
+    }
 
     return (
         <div >
@@ -22,8 +59,8 @@ const ActiveVacansie = (props) => {
                 <p className="blur">Опыт работы: {location.state.exp_work}</p>
                 <section>{location.state.description}</section>
                 {(location.state.user.id !== user.id) && <button>Отправить заявку</button>}
-                {(location.state.user.id === user.id && location.state.status !== 'Y_P') && <button>Опубликовать</button>}
-                {(location.state.user.id === user.id && location.state.status === 'Y_P') && <button>Снять с публикации</button>}
+                {(location.state.user.id === user.id && location.state.status !== 'Y_P') && <button onClick={publish}>Опубликовать</button>}
+                {(location.state.user.id === user.id && location.state.status === 'Y_P') && <button onClick={notPublish}>Снять с публикации</button>}
 
             </div>
         </div>
